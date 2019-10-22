@@ -1,6 +1,7 @@
 <template>
   <div class="noftound">
     <img src="../../assets/404.jpg">
+      
   </div>
 </template>
 

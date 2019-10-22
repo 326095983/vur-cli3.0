@@ -1,5 +1,5 @@
 <template>
-  <div class="registe">
+  <div class="register">
     <section class="form_container">
       <div class="manage_tip">
         <span class="title">XX在线后台管理系统</span>
@@ -24,8 +24,8 @@
           </el-form-item>
           <el-form-item label="选择身份">
             <el-select v-model="registerUser.identity" placeholder="请选择身份">
-              <el-option ladel="管理员" value="manager"></el-option>
-              <el-option ladel="员工" value="employee"></el-option>
+              <el-option label="管理员" value="manager"></el-option>
+              <el-option label="员工" value="employee"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item>
@@ -42,14 +42,14 @@ export default {
   name: "registe",
   data() {
     var validatePass2 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.registerUser.password) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
-          callback();
-        }
-      };
+      if (value === "") {
+        callback(new Error("请再次输入密码"));
+      } else if (value !== this.registerUser.password) {
+        callback(new Error("两次输入密码不一致!"));
+      } else {
+        callback();
+      }
+    };
     return {
       registerUser: {
         name: "",
@@ -104,21 +104,30 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.$axios
+            .post("/api/auth-controller/auth/login", this.registerUser)
+            .then(res => {
+              this.$message({
+                message: "账号注册成功",
+                type: "success"
+              });
+              console.log(res.data);
+            });
+          this.$router.push("./login");
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     }
-  },
+  }
 };
 </script>
 
 <style scoped>
-.registe {
+.register {
   position: relative;
   width: 100%;
   height: 100%;
@@ -127,7 +136,7 @@ export default {
 }
 
 .form_container {
-  width: 370px;
+  width: 400px;
   height: 210px;
   position: absolute;
   top: 10%;

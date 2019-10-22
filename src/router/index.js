@@ -1,14 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-const Registe = () => import("../views/Registe/Registe");
+const Index = () => import("../views/Index/Index");
+const Register = () => import("../views/Register/Register");
 const NotFound = () => import("../views/NotFound/NotFound");
+const Login = () => import("../views/Login/Login");
+const Home = () => import("../views/Home/Home");
+const InfoShow = () => import("../views/InfoShow/InfoShow");
+const FundList = () => import("../views/FundList/FundList");
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    redirect: "/registe"
+    redirect: "/register"
   },
   {
     path: "*",
@@ -16,9 +21,25 @@ const routes = [
     component: NotFound
   },
   {
-    path: "/registe",
-    name: "registe",
-    component: Registe
+    path: "/index",
+    name: "index",
+    component: Index,
+    children: [
+      { path: "", component: Home },
+      { path: "/home", component: Home },
+      { path: "/infoshow", component: InfoShow },
+      { path: "/fundlist", component: FundList }
+    ]
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: Register
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login
   }
 ];
 
@@ -28,4 +49,14 @@ const router = new VueRouter({
   routes
 });
 
+//路由守卫
+// router.beforeEach((to, from, next) => {
+//   // 判断是否有token
+//   const isLodin = localStorage.eleToken ? true : false;
+//   if (to.path == "/login" || to.path == "register") {
+//     next();
+//   } else {
+//     isLodin ? next() : next("/login");
+//   }
+// });
 export default router;
