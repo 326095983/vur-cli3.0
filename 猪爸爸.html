@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>猪爸爸</title>
+  <style>
+    div {
+      position: absolute;
+    }
+
+    .pig-container {
+      width: 800px;
+      height: 500px;
+    }
+
+    .pig_head {
+      /* 头部 */
+      width: 346px;
+      height: 226px;
+      border-radius: 40% 10% 60% 50%/ 54% 50% 50% 50%;
+      border: 6px solid #f893d9;
+      background-color: #fdc1e7;
+      transform: rotate(10deg);
+      z-index: 100;
+      box-sizing: border-box;
+      position: absolute;
+      left: 216px;
+      top: 53px;
+    }
+
+    /* 耳朵 */
+    .ear_left {
+      width: 24px;
+      height: 56px;
+      top: 10px;
+      left: 269px;
+      border: 6px solid #f893d9;
+      border-radius: 50% 50% 50% 50%/ 35% 40% 50% 50%;
+      background-color: #fdc1e7;
+      z-index: 100;
+      transform: rotate(-12deg);
+
+    }
+
+    .ear_right {
+      width: 24px;
+      height: 56px;
+      top: 1px;
+      left: 327px;
+      border: 6px solid #f893d9;
+      border-radius: 50% 50% 50% 50%/ 35% 40% 50% 50%;
+      background-color: #fdc1e7;
+      z-index: 100;
+      transform: rotate(-1deg);
+    }
+
+    .ear_left_box {
+      width: 25px;
+      height: 20px;
+      border-radius: 50%;
+      top: 51px;
+      left: 333px;
+      box-sizing: border-box;
+      background-color: #fdc1e7;
+      z-index: 100;
+    }
+
+    .ear_right_box {
+      width: 25px;
+      height: 20px;
+      border-radius: 50%;
+      top: 59px;
+      left: 281px;
+      box-sizing: border-box;
+      background-color: #fdc1e7;
+      z-index: 100;
+    }
+
+    /* 眼睛 */
+    .left_eye_bg {
+      width: 29px;
+      height: 29px;
+      top: 79px;
+      left: 353px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 6px solid #fff;
+      background-color: #fff;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    .left_eye_ball {
+      width: 10px;
+      height: 10px;
+      top: 93px;
+      left: 363px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 6px solid #000;
+      background-color: #000;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    .left_eye_border {
+      width: 34px;
+      height: 37px;
+      top: 76px;
+      left: 349px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 6px solid #f893d9;
+      background-color: transparent;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    .right_eye_bg {
+      width: 28px;
+      height: 28px;
+      top: 79px;
+      left: 409px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 6px solid #fff;
+      background-color: #fff;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    .right_eye_ball {
+      width: 10px;
+      height: 10px;
+      top: 93px;
+      left: 423px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 6px solid #000;
+      background-color: #000;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    .right_eye_border {
+      width: 35px;
+      height: 37px;
+      top: 75px;
+      left: 408px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 6px solid #f893d9;
+      background-color: transparent;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    /* 眼镜 */
+    .left_glasses {
+      width: 50px;
+      height: 54px;
+      top: 68px;
+      left: 401px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 3px solid #000;
+      background-color: transparent;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    .left_glasses_box {
+      width: 125px;
+      top: 104px;
+      left: 218px;
+      border: 4px solid #000;
+      background-color: transparent;
+      transform: rotate(-7deg);
+      z-index: 102;
+      box-sizing: border-box;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .center_glasses {
+      width: 25px;
+      top: 94px;
+      left: 384px;
+      border: 4px solid #000;
+      background-color: transparent;
+      transform: rotate(-7deg);
+      z-index: 102;
+      box-sizing: border-box;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .right_glasses {
+      width: 50px;
+      height: 54px;
+      top: 68px;
+      left: 341px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      border: 3px solid #000;
+      background-color: transparent;
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    /* 鼻子 */
+    .pig_nose {
+      width: 63px;
+      height: 82px;
+      top: 77px;
+      left: 506px;
+      border-radius: 72% 72% 72% 72%/ 72% 72% 72% 72%;
+      border: 6px solid #f893d9;
+      background-color: #fdc1e7;
+      transform: rotate(7deg);
+      z-index: 103;
+      box-sizing: border-box;
+    }
+
+    .pig_nose_bottom {
+      width: 94px;
+      height: 13px;
+      top: 163px;
+      left: 457px;
+      border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+      border: 6px solid #f893d9;
+      background-color: #fdc1e7;
+      transform: rotate(-13deg);
+      z-index: 102;
+      box-sizing: border-box;
+      border-top-color: #fdc1e7;
+    }
+
+    /* 鼻孔 */
+    .nose_kong_left {
+      width: 15px;
+      height: 15px;
+      top: 114px;
+      left: 522px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      background-color: #ec5d88;
+      z-index: 103;
+    }
+
+    .nose_kong_right {
+      width: 15px;
+      height: 15px;
+      top: 114px;
+      left: 543px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      background-color: #ec5d88;
+      z-index: 103;
+    }
+
+    /* 鼻头下 */
+    .pig_jaw {
+      width: 120px;
+      height: 115px;
+      top: 163px;
+      left: 337px;
+      border-radius: 0% 0% 92% 22%/ 0% 0% 92% 37%;
+      border: 6px solid #f893d9;
+      background-color: #fdc1e7;
+      transform: rotate(5deg);
+      z-index: 101;
+      box-sizing: border-box;
+      border-top-color: #fdc1e7;
+      border-left-color: #fdc1e7;
+    }
+
+    /* 头部里面的粉色 */
+    .pig_head_pink_box {
+      width: 135px;
+      height: 53px;
+      top: 118px;
+      left: 408px;
+      background-color: #fdc1e7;
+      box-sizing: border-box;
+      z-index: 101;
+      transform: rotate(-12deg);
+    }
+
+    /* 嘴巴下面的白色 */
+    .pig_head_white_right_bottom {
+      width: 173px;
+      height: 147px;
+      top: 132px;
+      left: 417px;
+      background-color: #fff;
+      box-sizing: border-box;
+      z-index: 100;
+      border-radius: 0% 0% 92% 0%/ 0% 0% 92% 0%;
+      transform: rotate(0deg);
+    }
+
+    /* 嘴巴下面的衣服 */
+    .pig_head_green_right_bottom {
+      width: 126px;
+      height: 79px;
+      top: 218px;
+      left: 367px;
+      background-color: #87bbb7;
+      border: 6px solid #72a898;
+      z-index: 101;
+      border-radius: 0% 58% 0% 0%/ 0% 100% 0% 0%;
+      transform: rotate(-18deg);
+      border-bottom-color: #87bbb7;
+      border-left-color: #87bbb7;
+    }
+
+    /* 嘴巴 */
+    .mouth_bottom {
+      width: 57px;
+      height: 35px;
+      top: 182px;
+      left: 360px;
+      border-radius: 50% 50% 50% 50%/ 30% 30% 100% 100%;
+      border: 6px solid #f893d9;
+      background-color: #fdc1e7;
+      z-index: 102;
+      box-sizing: border-box;
+      transform: rotate(-2deg);
+      border-top-color: #fdc1e7;
+    }
+
+    .pig_bottom_box {
+      width: 80px;
+      height: 80px;
+      top: 205px;
+      left: 326px;
+      border-radius: 0% 0% 0% 100%/ 0% 0% 0% 100%;
+      border: 6px solid #fdc1e7;
+      transform: rotate(-50deg);
+      z-index: 101;
+      box-sizing: border-box;
+    }
+
+    /* 脸颊 */
+    .face {
+      width: 55px;
+      height: 58px;
+      top: 138px;
+      left: 283px;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      background-color: #fc9cd9;
+      transform: rotate(6deg);
+      z-index: 102
+    }
+
+    .pig_body_bottom {
+      /* 身体 */
+      left: 167px;
+      top: 204px;
+      width: 350px;
+      height: 320px;
+      border: 6px solid #72a898;
+      border-radius: 83% 51% 80% 80%/ 83% 74% 81% 80%;
+      background-color: #87bbb7;
+      z-index: 99;
+      position: absolute;
+    }
+
+    /* 右手 */
+    .hand_left_middle {
+      width: 110px;
+      height: 13px;
+      top: 303px;
+      left: 120px;
+      border-radius: 100% 100% 100% 17%/ 100% 90% 16% 90%;
+      background-color: #ffbadf;
+      z-index: 99;
+      transform: rotate(-11deg);
+    }
+
+    .hand_left_top {
+      width: 32px;
+      height: 8px;
+      top: 300px;
+      left: 123px;
+      border-radius: 100% 100% 100% 35%/ 100% 90% 16% 90%;
+      background-color: #ffbadf;
+      transform: rotate(29deg);
+      z-index: 99;
+    }
+
+    .hand_left_bottom {
+      width: 25px;
+      height: 10px;
+      top: 323px;
+      left: 135px;
+      border-radius: 60% 59% 65% 90%/ 100% 90% 89% 90%;
+      background-color: #ffbadf;
+      z-index: 99;
+      transform: rotate(114deg);
+    }
+
+    /* 右手 */
+    .hand_right_middle {
+      width: 65px;
+      height: 13px;
+      top: 302px;
+      left: 508px;
+      border-radius: 100% 100% 15% 17%/ 99% 92% 90% 90%;
+      background-color: #ffbadf;
+      z-index: 99;
+      transform: rotate(28deg);
+    }
+
+    .hand_right_top {
+      width: 28px;
+      height: 10px;
+      top: 320px;
+      left: 530px;
+      border-radius: 100% 100% 15% 17%/ 99% 92% 90% 90%;
+      background-color: #ffbadf;
+      z-index: 99;
+      transform: rotate(-94deg);
+    }
+
+    .hand_right_bottom {
+      width: 29px;
+      height: 8px;
+      top: 297px;
+      left: 542px;
+      border-radius: 100% 100% 62% 17%/ 99% 92% 90% 90%;
+      background-color: #ffbadf;
+      z-index: 99;
+      transform: rotate(-24deg);
+    }
+
+    /* 左脚 */
+    .left_foot {
+      width: 12px;
+      height: 44px;
+      top: 520px;
+      left: 415px;
+      border-radius: 100% 100% 100% 100%/ 50% 50% 21% 20%;
+      background-color: #ffbadf;
+      z-index: 99;
+    }
+
+    .left_shoes {
+      width: 51px;
+      height: 14px;
+      top: 553px;
+      left: 259px;
+      border-radius: 58% 187% 180% 50%/ 130% 123% 113% 100%;
+      background-color: #000;
+      z-index: 99;
+      transform: rotate(180deg);
+    }
+
+    .right_foot {
+      left: 260px;
+      height: 55px;
+      top: 505px;
+    }
+
+    .right_shoes {
+      left: 414px;
+    }
+
+    /* 尾巴 */
+    .tail_left {
+      width: 32px;
+      height: 7px;
+      top: 452px;
+      left: 140px;
+      border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+      transform: rotate(71deg);
+      background-color: #ffbadf;
+      z-index: 99;
+    }
+
+    .tail_left_blank {
+      width: 30px;
+      height: 15px;
+      top: 466px;
+      left: 332px;
+      border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+      transform: rotate(-36deg);
+      background-color: #fff;
+      z-index: 99;
+    }
+
+    .tail_right {
+      width: 21px;
+      height: 5px;
+      top: 460px;
+      left: 156px;
+      border-radius: 0% 0% 51% 50%/ 0% 0% 100% 100%;
+      transform: rotate(31deg);
+      background-color: #fff;
+      z-index: 99;
+      border: 8px solid #ffbadf;
+      border-top-color: #fff;
+    }
+
+    .tail_middle {
+      width: 12px;
+      height: 12px;
+      top: 448px;
+      left: 163px;
+      border: 8px solid #ffbadf;
+      border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+      background-color: #fff;
+      z-index: 99;
+    }
+
+    .tail_circle {
+      width: 17px;
+      height: 8px;
+      top: 469px;
+      left: 186px;
+      border-radius: 36% 37% 62% 63%/ 99% 92% 90% 90%;
+      background-color: #ffbadf;
+      z-index: 99;
+      transform: rotate(-17deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pig-container">
+    <!-- 猪头 -->
+    <div>
+      <div>
+        <div class="pig_head"></div>
+        <!-- 耳朵 -->
+        <div class="ear_left"></div>
+        <div class="ear_right"></div>
+        <div class="ear_left_box"></div>
+        <div class="ear_right_box"></div>
+      </div>
+      <!-- 左眼 -->
+      <div class="left_eye">
+        <div class="left_eye_bg"></div>
+        <div class="left_eye_ball"></div>
+        <div class="left_eye_border"></div>
+      </div>
+      <!-- 右眼 -->
+      <div class="right_eye">
+        <div class="right_eye_bg"></div>
+        <div class="right_eye_ball"></div>
+        <div class="right_eye_border"></div>
+      </div>
+      <!-- 眼镜 -->
+      <!-- 左 -->
+      <div class="left_glasses"></div>
+      <div class="left_glasses_box"></div>
+      <!-- 中间 -->
+      <div class="center_glasses"></div>
+      <!-- 右 -->
+      <div class="right_glasses">
+      </div>
+      <!-- 猪头填充粉色 -->
+      <div class="pig_head_pink_box"></div>
+      <!-- 鼻子 -->
+      <div class="pig_nose"></div>
+      <!-- 鼻孔 -->
+      <div class="nose_kong_left"></div>
+      <div class="nose_kong_right"></div>
+      <!-- 嘴巴 -->
+      <div class="mouth_bottom"></div>
+      <!-- 下巴 -->
+      <div class="pig_head_white_right_bottom"></div>
+      <div class="pig_head_green_right_bottom"></div>
+      <div class="pig_nose_bottom"></div>
+      <div class="pig_jaw"></div>
+      <!-- 下巴修饰 -->
+      <div class="pig_bottom_box"></div>
+      <!-- 脸颊 -->
+      <div class="face"></div>
+      <!-- 身体 -->
+      <div class="pig_body_bottom"></div>
+      <!-- 右手 -->
+      <div>
+        <div class="hand_right_top"></div>
+        <div class="hand_right_bottom"></div>
+        <div class="hand_right_middle"></div>
+      </div>
+      <!-- 左手 -->
+      <div>
+        <div class="hand_left_top"></div>
+        <div class="hand_left_bottom"></div>
+        <div class="hand_left_middle"></div>
+      </div>
+      <!-- 左脚 -->
+      <div class="left_foot"></div>
+      <div class="left_foot right_foot"></div>
+      <!-- 左鞋 -->
+      <div class="left_shoes"></div>
+      <div class="left_shoes right_shoes"></div>
+      <!-- 尾巴 -->
+      <div class="tail_left"></div>
+      <div class="tail_right"></div>
+      <div class="tail_middle"></div>
+      <div class="tail_circle"></div>
+    </div>
+</body>
+
+</html>
