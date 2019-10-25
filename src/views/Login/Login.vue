@@ -43,7 +43,6 @@ export default {
       rules: {
         email: [
           {
-            type: "email",
             required: true,
             message: "邮箱根式不正确",
             trigger: "blur"
