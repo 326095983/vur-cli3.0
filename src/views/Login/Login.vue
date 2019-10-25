@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" v-loading="loading" element-loading-text="登录中">
     <section class="form_container">
       <div class="manage_tip">
         <span class="title">XX在线后台管理系统</span>
@@ -10,8 +10,8 @@
           label-width="60px"
           class="loginForm"
         >
-          <el-form-item label="邮箱" prop="email">
-            <el-input v-model="loginUser.email" placeholder="请输入email"></el-input>
+          <el-form-item label="账号" prop="phone">
+            <el-input v-model="loginUser.phone" placeholder="请输入手机号码"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
             <el-input type="password" v-model="loginUser.password" placeholder="请输入密码"></el-input>
@@ -36,15 +36,22 @@ export default {
   name: "login",
   data() {
     return {
+      loading:false,
       loginUser: {
-        email: "",
+        phone: "",
         password: ""
       },
       rules: {
-        email: [
+        phone: [
           {
             required: true,
-            message: "邮箱根式不正确",
+            message: "请输入11位手机号码",
+            trigger: "blur"
+          },
+          {
+            min: 11,
+            max: 11,
+            message: "请输入11位手机号码",
             trigger: "blur"
           }
         ],
@@ -80,15 +87,21 @@ export default {
     // }
     //登录
     async submitForm() {
+      this.loading = true;
       let url = "/auth/login"; //请求接口名
-      let result = await this.request.httpRequest("POST", url, this.loginUser);
+      let result = await this.$request.httpRequest("POST", url, this.loginUser);
       if (result.code == 200) {
-        const { token } = result.data;
-        //存储到ls
-        localStorage.setItem("eleTpken", token);
+        console.log(result.data);
+        this.loading = false;
+        // this.$router.push("/index");
+        // const { token } = result.data;
+        // //存储到ls
+        // localStorage.setItem("eleTpken", token);
       } else {
         this.$message({ type: "error", message: result.msg });
-        this.$router.push("/index");
+        console.log(7788);
+        
+        this.loading = false;
       }
     }
   }

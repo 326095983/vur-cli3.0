@@ -106,6 +106,16 @@ export default {
         startTime: '',
         endTime: ''
       },
+       data:{
+          currentPage:1,
+          pageSize:10,
+					type:'',
+					yearMonth:'',
+					name:'',
+					status:'',
+					domainId:'',
+					room:'',
+        },
       paginations: {
         page_index: 1, //当前位于那页
         total: 0, //总数
@@ -198,22 +208,22 @@ export default {
   },
   created() {
     //调用获取数据方法
-    // this.getProfile();
+    this.getProfile();
   },
   methods: {
     //获取数据方法
-    async getProfile1() {
-      let url = "/owner/queryPage";
-      let result = await this.request.httpRequest("POST", url, this.data);
+    async getProfile() {
+      let url = "/settle/queryPage";
+      let result = await this.$request.httpRequest("POST", url, this.data);
       if (result.code == 200) {
         // this.total = result.data.totalRows
         // this.data.pageSize = result.data.pageSize
         // this.data.currentPage = result.data.currentPage
         // this.getList = result.data.datas
         console.log(result.data);
-        this.allTableData = res.data;
+        // this.allTableData = res.data;
         //设置分页数据
-        this.setPaginations();
+        // this.setPaginations();
       } else {
         this.$message({ type: "error", message: result.msg });
       }
@@ -227,9 +237,6 @@ export default {
       this.tableData = this.allTableData.filter((item, index) => {
         return index < this.paginations.page_size;
       })
-    },
-    getProfile() {
-      console.log("只能这样测试调用获取数据方法");
     },
     handleEdit(index, row) {
       //编辑按钮
