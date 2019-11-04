@@ -1,4 +1,5 @@
 <template>
+<!-- 资金流水分页 -->
   <div class="dialog">
     <el-dialog :title="dialog.title" :visible.sync="dialog.show" :close-on-click-modal="false" :close-on-press-escape="false" :modal-append-to-body="false">
       <div class="form">
@@ -34,7 +35,6 @@
 </template>
 <script>
 export default {
-  name: 'dialog',
   props: {
     dialog: Object,
     formData: Object

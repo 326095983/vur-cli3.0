@@ -10,7 +10,7 @@
           <img src="../assets/use.jpeg" alt class="avatar" />
           <div class="welcome">
             <p class="name comename">欢迎</p>
-            <p class="name avataname">{{user.name}}</p>
+            <p class="name avataname">{{user.name}}</p> 
           </div>
           <span class="username">
             <!-- 下拉箭头 -->
@@ -25,6 +25,7 @@
             </el-dropdown>
           </span>
         </div>
+      
       </el-col>
     </el-row>
   </div>

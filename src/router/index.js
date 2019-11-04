@@ -7,12 +7,14 @@ const Login = () => import("../views/Login/Login");
 const Home = () => import("../views/Home/Home");
 const InfoShow = () => import("../views/InfoShow/InfoShow");
 const FundList = () => import("../views/FundList/FundList");
+const Userlist = () => import("../views/Userlist/Userlist");
+const UserTwo = () => import("../views/UserTwo/UserTwo");
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "",
     redirect: "/login"
   },
   {
@@ -28,7 +30,9 @@ const routes = [
       { path: "", component: Home },
       { path: "/home", component: Home },
       { path: "/infoshow", component: InfoShow },
-      { path: "/fundlist", component: FundList }
+      { path: "/fundlist", component: FundList },
+      { path: "/userlist", component: Userlist },
+      { path: "/usertwo", component: UserTwo }
     ]
   },
   {
@@ -49,14 +53,14 @@ const router = new VueRouter({
   routes
 });
 
-//路由守卫
-// router.beforeEach((to, from, next) => {
-//   // 判断是否有token
-//   const isLodin = localStorage.eleToken ? true : false;
-//   if (to.path == "/login" || to.path == "register") {
-//     next();
-//   } else {
-//     isLodin ? next() : next("/login");
-//   }
-// });
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  // 判断是否有token
+  const isLodin = sessionStorage.token ? true : false;
+  if (to.path == "/login" || to.path == "/register") {
+    next();
+  } else {
+    isLodin ? next() : next("/login");
+  }
+});
 export default router;

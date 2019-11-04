@@ -20,7 +20,11 @@
               <i :class="item.icon"></i>
               <span slot="title">{{ item.name }}</span>
             </template>
-            <router-link v-for="(citem, cindex) in item.children" :to="citem.path" :key="cindex">
+            <router-link
+              v-for="(citem, cindex) in item.children"
+              :to="citem.path"
+              :key="cindex"
+            >
               <el-menu-item :index="citem.path">
                 <span slot="title">{{ citem.name }}</span>
               </el-menu-item>
@@ -48,7 +52,11 @@ export default {
           icon: "glyphicon glyphicon-cog fa-margin",
           name: "信息管理",
           path: "info",
-          children: [{ path: "infoshow", name: "个人信息" }]
+          children: [
+            { path: "infoshow", name: "个人信息" },
+            { path: "userlist", name: "用户信息" },
+            { path: "usertwo", name: "用户信息two" }
+          ]
         }
       ]
     };

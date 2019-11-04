@@ -10,8 +10,8 @@
           label-width="60px"
           class="loginForm"
         >
-          <el-form-item label="账号" prop="phone">
-            <el-input v-model="loginUser.phone" placeholder="请输入手机号码"></el-input>
+          <el-form-item label="账号" prop="mobile">
+            <el-input v-model="loginUser.mobile" placeholder="请输入手机号码"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
             <el-input type="password" v-model="loginUser.password" placeholder="请输入密码"></el-input>
@@ -37,12 +37,12 @@ export default {
   data() {
     return {
       loading:false,
-      loginUser: {
-        phone: "",
-        password: ""
-      },
+      loginUser:{
+          mobile:'',
+          password:'',
+        },
       rules: {
-        phone: [
+        mobile: [
           {
             required: true,
             message: "请输入11位手机号码",
@@ -72,35 +72,23 @@ export default {
     };
   },
   methods: {
-    // submitForm(formName) {
-    //   this.$refs[formName].validate(valid => {
-    //     if (valid) {
-    //       this.$axios
-    //         .post("/api/auth/login", this.loginUser)
-    //         .then(res => {
-    //           console.log(res);
-    //           //token
-    //         });
-    //       this.$router.push("./index");
-    //     }
-    //   });
-    // }
     //登录
     async submitForm() {
       this.loading = true;
       let url = "/auth/login"; //请求接口名
       let result = await this.$request.httpRequest("POST", url, this.loginUser);
       if (result.code == 200) {
-        console.log(result.data);
+          // sessionStorage.setItem('userInfo',JSON.stringify(result.data))
+          // sessionStorage.setItem('token',result.data.token)
+          // sessionStorage.setItem('loginTime',this.moment().format('YYYY年MM月DD日'))
+          // sessionStorage.setItem('ip',returnCitySN.cip)
+        //存储到 local磁盘/session内存
+        sessionStorage.setItem('token',result.data.token)
         this.loading = false;
-        // this.$router.push("/index");
-        // const { token } = result.data;
-        // //存储到ls
-        // localStorage.setItem("eleTpken", token);
+        this.$router.push("/index");
+        
       } else {
         this.$message({ type: "error", message: result.msg });
-        console.log(7788);
-        
         this.loading = false;
       }
     }

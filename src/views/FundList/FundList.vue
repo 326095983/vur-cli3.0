@@ -213,12 +213,10 @@ export default {
   methods: {
     //获取数据方法
     async getProfile() {
-      let url = "/settle/queryPage";
+      let url = "/role/queryList";
       let result = await this.$request.httpRequest("POST", url, this.data);
       if (result.code == 200) {
-        // this.total = result.data.totalRows
-        // this.data.pageSize = result.data.pageSize
-        // this.data.currentPage = result.data.currentPage
+  
         // this.getList = result.data.datas
         console.log(result.data);
         // this.allTableData = res.data;
