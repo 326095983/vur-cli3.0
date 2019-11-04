@@ -13,7 +13,7 @@
             <el-input type="describe" v-model="formData.describe"></el-input>
           </el-form-item>
           <el-form-item prop="income" label="收入:">
-            <el-input type="income" v-model="formData.income"></el-input>
+            <el-input type="income" v-model="formData.income"></el-input> 
           </el-form-item>
           <el-form-item prop="expend" label="支出:">
             <el-input type="expend" v-model="formData.expend"></el-input>
